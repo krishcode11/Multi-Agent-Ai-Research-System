@@ -1,9 +1,10 @@
 from agents import build_reader_agent , build_search_agent , writer_chain , critic_chain
 
-def run_research_pipeline(topic : str) -> str:
+def run_research_pipeline(topic : str, ui_callback=None) -> dict:
     state = {}
 
     #search agent working
+    if ui_callback: ui_callback("search", "Search Agent is finding recent and reliable sources...")
     print("\n"+" ="*50)
     print("step 1 - Search Agent is working ....")
     print("="*50)
@@ -17,6 +18,7 @@ def run_research_pipeline(topic : str) -> str:
     print("\n search result ",state['search_result'])
 
     #reader agent working
+    if ui_callback: ui_callback("reader", "Reader Agent is scraping and reading the top resources...")
     print("\n"+ " ="*50)
     print("step 2 - Reader Agent is scrapung top resources .... ")
     print(" ="*50)
@@ -38,6 +40,7 @@ def run_research_pipeline(topic : str) -> str:
     print("\n scraped content ",state['scraped_content'])
 
     #writer agent working
+    if ui_callback: ui_callback("writer", "Writer Agent is structuring and writing the comprehensive report...")
     print("\n"+ " ="*50)
     print("step 3 - Writer Agent is writing the article .... ")
     print(" ="*50)
@@ -55,6 +58,7 @@ def run_research_pipeline(topic : str) -> str:
     print("\n Final Report \n",state['report'])
 
     #critic report
+    if ui_callback: ui_callback("critic", "Critic Agent is reviewing the report for quality and accuracy...")
     print("\n" + " ="*50)
     print("step 4 - Critic Agent is reviewing the report")
     print(" ="*50)
@@ -64,6 +68,7 @@ def run_research_pipeline(topic : str) -> str:
     })
     print("\n critic result \n",state["feedback"])
 
+    if ui_callback: ui_callback("done", "Research pipeline completed successfully!")
     return state
 
     
