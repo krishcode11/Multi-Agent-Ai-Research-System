@@ -46,7 +46,7 @@ st.markdown("""
 html, body, [class*="css"] { font-family: var(--sans); }
 .stApp { background: var(--bg-base) !important; color: var(--text-primary); }
 #MainMenu, footer, header { visibility: hidden !important; }
-.block-container { padding: 0 !important; max-width: 100% !important; }
+.block-container { padding: 2rem 2rem 4rem !important; max-width: 900px !important; margin: 0 auto !important; }
 section[data-testid="stSidebar"] { display: none !important; }
 
 /* ── Top nav ────────────────────────────────────────────────────────────── */
